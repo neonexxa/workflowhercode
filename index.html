@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+
+     <div id="chart_div"></div>
+<script>
+	      google.charts.load('current', {'packages':['gantt']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Task ID');
+      data.addColumn('string', 'Task Name');
+      data.addColumn('string', 'Resource');
+      data.addColumn('date', 'Start Date');
+      data.addColumn('date', 'End Date');
+      data.addColumn('number', 'Duration');
+      data.addColumn('number', 'Percent Complete');
+      data.addColumn('string', 'Dependencies');
+
+      data.addRows([
+      	['HICOM-1', 'WEB Design', 			 							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+      	['HICOM-2', 'Poster recruitment',    							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+      	['HICOM-3', 'Meeting with DR fadzil, Dr jef, Mr zamri',    		'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+      	['HICOM-4', 'Finalise Venue',        							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+        ['HRM-1', 'Committee Recruitment',   							'HRM', 		new Date(2017, 8, 12), new Date(2017, 8, 13), null, 0, null],
+        ['HICOM-5', 'Open Registation Participant Code Camp',        	'HICOM', 	new Date(2017, 8, 12), new Date(2017, 9, 15), null, 0, null],
+        ['HICOM-6', 'Open Registation Participant Hercode',        		'HICOM', 	new Date(2017, 8, 12), new Date(2017, 10, 10), null, 0, null],
+        ['HRM-2', 'Committee List Finalise', 							'HRM', 		new Date(2017, 8, 13), new Date(2017, 8, 16), null, 0, null],
+        // ['LOG-1', 'Finalise Venue',          'LOG', 	new Date(2017, 8, 16), new Date(2017, 8, 18), null, 0, null],
+        ['LOG-2', 'Transportation',          							'LOG', 		new Date(2017, 8, 18), new Date(2017, 8, 30), null, 0, null],
+        ['CNP-1', 'Finalise Venue with hicom',          				'CNP', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['CNP-2', 'Finalise Event Flow',          						'CNP', 		new Date(2017, 9, 15), new Date(2017, 10, 10), null, 0, null],
+        ['CNP-3', 'VIP finalise',          								'CNP', 		new Date(2017, 9, 26), new Date(2017, 9, 30), null, 0, null],
+        ['CNP-4', 'VIP Invitation',          							'CNP', 		new Date(2017, 10, 1), new Date(2017, 10, 20), null, 0, null],
+        ['MED-1', 'Poster & Banner Design & Tempah',   				 	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['MED-2', 'Montage storyboard and design',          		 	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['MED-3', 'Shirt Committee and Participant design',          	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['MED-3', 'Shirt tempah',          								'MED', 		new Date(2017, 9, 20), new Date(2017, 10, 15), null, 0, null]
+      ]);
+      // console.log(data);
+
+      var options = {
+        height: 400,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+
+      var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+
+</script>
+</body>
+</html>
