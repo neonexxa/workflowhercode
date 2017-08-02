@@ -6,25 +6,35 @@
 </head>
 <body>
 
-
-     <div id="chart_div"></div>
+	<h4>Overrall Task Flow</h4>
+    <div id="chart_all"></div>
+    <h4>Task Flow By Section/Dept</h4>
+    <h5>HICOM</h5>
+    <div id="chart_hicom"></div>
+    <h5>HUMAN RESOURCES</h5>
+    <div id="chart_hr"></div>
+    <h5>LOGISTIC</h5>
+    <div id="chart_log"></div>
+    <h5>MEDIA</h5>
+    <div id="chart_med"></div>
+	<h5>CEREMONY & PROTOCOL</h5>
+    <div id="chart_cnp"></div>
 <script>
-	      google.charts.load('current', {'packages':['gantt']});
+	google.charts.load('current', {'packages':['gantt']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
 
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Task ID');
-      data.addColumn('string', 'Task Name');
-      data.addColumn('string', 'Resource');
-      data.addColumn('date', 'Start Date');
-      data.addColumn('date', 'End Date');
-      data.addColumn('number', 'Duration');
-      data.addColumn('number', 'Percent Complete');
-      data.addColumn('string', 'Dependencies');
-
-      data.addRows([
+      var all = new google.visualization.DataTable();
+      all.addColumn('string', 'Task ID');
+      all.addColumn('string', 'Task Name');
+      all.addColumn('string', 'Resource');
+      all.addColumn('date', 'Start Date');
+      all.addColumn('date', 'End Date');
+      all.addColumn('number', 'Duration');
+      all.addColumn('number', 'Percent Complete');
+      all.addColumn('string', 'Dependencies');
+      all.addRows([
       	['HICOM-1', 'WEB Design', 			 							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
       	['HICOM-2', 'Poster recruitment',    							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
       	['HICOM-3', 'Meeting with DR fadzil, Dr jef, Mr zamri',    		'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
@@ -42,20 +52,131 @@
         ['MED-1', 'Poster & Banner Design & Tempah',   				 	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
         ['MED-2', 'Montage storyboard and design',          		 	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
         ['MED-3', 'Shirt Committee and Participant design',          	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
-        ['MED-3', 'Shirt tempah',          								'MED', 		new Date(2017, 9, 20), new Date(2017, 10, 15), null, 0, null]
+        ['MED-4', 'Shirt tempah',          								'MED', 		new Date(2017, 9, 20), new Date(2017, 10, 15), null, 0, null]
       ]);
       // console.log(data);
+      var hicom = new google.visualization.DataTable();
+      hicom.addColumn('string', 'Task ID');
+      hicom.addColumn('string', 'Task Name');
+      hicom.addColumn('string', 'Resource');
+      hicom.addColumn('date', 'Start Date');
+      hicom.addColumn('date', 'End Date');
+      hicom.addColumn('number', 'Duration');
+      hicom.addColumn('number', 'Percent Complete');
+      hicom.addColumn('string', 'Dependencies');
+      hicom.addRows([
+      	['HICOM-1', 'WEB Design', 			 							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+      	['HICOM-2', 'Poster recruitment',    							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+      	['HICOM-3', 'Meeting with DR fadzil, Dr jef, Mr zamri',    		'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+      	['HICOM-4', 'Finalise Venue',        							'HICOM', 	new Date(2017, 8, 5), new Date(2017, 8, 11), null, 0, null],
+        ['HICOM-5', 'Open Registation Participant Code Camp',        	'HICOM', 	new Date(2017, 8, 12), new Date(2017, 9, 15), null, 0, null],
+        ['HICOM-6', 'Open Registation Participant Hercode',        		'HICOM', 	new Date(2017, 8, 12), new Date(2017, 10, 10), null, 0, null]
+      ]);
+      var log = new google.visualization.DataTable();
+      log.addColumn('string', 'Task ID');
+      log.addColumn('string', 'Task Name');
+      log.addColumn('string', 'Resource');
+      log.addColumn('date', 'Start Date');
+      log.addColumn('date', 'End Date');
+      log.addColumn('number', 'Duration');
+      log.addColumn('number', 'Percent Complete');
+      log.addColumn('string', 'Dependencies');
+      log.addRows([
+        ['LOG-2', 'Transportation',          							'LOG', 		new Date(2017, 8, 18), new Date(2017, 8, 30), null, 0, null]
+      ]);
+      var med = new google.visualization.DataTable();
+      med.addColumn('string', 'Task ID');
+      med.addColumn('string', 'Task Name');
+      med.addColumn('string', 'Resource');
+      med.addColumn('date', 'Start Date');
+      med.addColumn('date', 'End Date');
+      med.addColumn('number', 'Duration');
+      med.addColumn('number', 'Percent Complete');
+      med.addColumn('string', 'Dependencies');
+      med.addRows([
+        ['MED-1', 'Poster & Banner Design & Tempah',   				 	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['MED-2', 'Montage storyboard and design',          		 	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['MED-3', 'Shirt Committee and Participant design',          	'MED', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['MED-4', 'Shirt tempah',          								'MED', 		new Date(2017, 9, 20), new Date(2017, 10, 15), null, 0, null]
+      ]);
+      var hr = new google.visualization.DataTable();
+      hr.addColumn('string', 'Task ID');
+      hr.addColumn('string', 'Task Name');
+      hr.addColumn('string', 'Resource');
+      hr.addColumn('date', 'Start Date');
+      hr.addColumn('date', 'End Date');
+      hr.addColumn('number', 'Duration');
+      hr.addColumn('number', 'Percent Complete');
+      hr.addColumn('string', 'Dependencies');
+      hr.addRows([
+        ['HRM-1', 'Committee Recruitment',   							'HRM', 		new Date(2017, 8, 12), new Date(2017, 8, 13), null, 0, null],
+        ['HRM-2', 'Committee List Finalise', 							'HRM', 		new Date(2017, 8, 13), new Date(2017, 8, 16), null, 0, null]
+      ]);
+      var cnp = new google.visualization.DataTable();
+      cnp.addColumn('string', 'Task ID');
+      cnp.addColumn('string', 'Task Name');
+      cnp.addColumn('string', 'Resource');
+      cnp.addColumn('date', 'Start Date');
+      cnp.addColumn('date', 'End Date');
+      cnp.addColumn('number', 'Duration');
+      cnp.addColumn('number', 'Percent Complete');
+      cnp.addColumn('string', 'Dependencies');
+      cnp.addRows([
+        ['CNP-1', 'Finalise Venue with hicom',          				'CNP', 		new Date(2017, 8, 18), new Date(2017, 9, 15), null, 0, null],
+        ['CNP-2', 'Finalise Event Flow',          						'CNP', 		new Date(2017, 9, 15), new Date(2017, 10, 10), null, 0, null],
+        ['CNP-3', 'VIP finalise',          								'CNP', 		new Date(2017, 9, 26), new Date(2017, 9, 30), null, 0, null],
+        ['CNP-4', 'VIP Invitation',          							'CNP', 		new Date(2017, 10, 1), new Date(2017, 10, 20), null, 0, null]
+      ]);
 
-      var options = {
-        height: 400,
+      var options_all = {
+        height: 600,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+      var options_hr = {
+        height: 100,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+      var options_med = {
+        height: 200,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+      var options_log = {
+        height: 100,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+      var options_hicom = {
+        height: 250,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+      var options_cnp = {
+        height: 200,
         gantt: {
           trackHeight: 30
         }
       };
 
-      var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
-
-      chart.draw(data, options);
+      var chart_all = new google.visualization.Gantt(document.getElementById('chart_all'));
+      chart_all.draw(all, options_all);
+      var chart_hicom = new google.visualization.Gantt(document.getElementById('chart_hicom'));
+      chart_hicom.draw(hicom, options_hicom);
+      var chart_hr = new google.visualization.Gantt(document.getElementById('chart_hr'));
+      chart_hr.draw(hr, options_hr);
+      var chart_log = new google.visualization.Gantt(document.getElementById('chart_log'));
+      chart_log.draw(log, options_log);
+      var chart_med = new google.visualization.Gantt(document.getElementById('chart_med'));
+      chart_med.draw(med, options_med);
+      var chart_cnp = new google.visualization.Gantt(document.getElementById('chart_cnp'));
+      chart_cnp.draw(cnp, options_cnp);
     }
 
 </script>
